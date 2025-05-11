@@ -1,4 +1,6 @@
 import random
+from NeshalSubba_02240086_A2_PB import Pokemon_card_binder_manager
+
 # Guess the Number Game Class
 class Guess_number_game:
     def __init__(self):
@@ -97,42 +99,6 @@ class TriviaPursuitGame:
 
 
 
-# Pokemon Binder Manager Class
-class card_Binder_Manager:
-    def __init__(self):
-        self.binder = []
-    """creating a class and defing init and creating a empty list where the new cards are added"""
-    def manage(self):
-        print("\nPOKEMON CARD BINDER MANAGER")
-        while True:
-            print("\nMain Menu:")
-            print("1. Add a card")
-            print("2. Reset binder")
-            print("3. View cards")
-            print("4. Exit")
-            choice = input("Choose an option: ")
-            if choice == "1":
-                if len(self.binder) >= 64:
-                    print("Binder is full. Max 64 cards allowed.")
-                else:
-                    card = input("Enter card name: ")
-                    self.binder.append(card)
-                    print(f"{card} added to binder.")
-            elif choice == "2":
-                self.binder = []
-                print("Binder reset.")
-            elif choice == "3":
-                if not self.binder:
-                    print("Binder is empty.")
-                else:
-                    for i, card in enumerate(self.binder, start=1):
-                        print(f"{i}. {card}")
-            elif choice == "4":
-                break
-            else:
-                print("Invalid choice.")
-"""firstly showing the main menu to the user and using the if else statement let the user to select the option as mention above"""
-
 
 
 #  Control center of all
@@ -141,7 +107,7 @@ class Game:
         self.guess_game = Guess_number_game()
         self.rps_game = Rock_Paper_Scissors_game()
         self.trivia_game = TriviaPursuitGame()
-        self.binder_manager = card_Binder_Manager()
+        self.binder_game = Pokemon_card_binder_manager()
         """creating the class called game where all the games are mention together"""
     def show_scores(self):
         print("\nTOTAL SCORES:")
@@ -168,7 +134,7 @@ class Game:
             elif choice == "3":
                 self.trivia_game.play_game()
             elif choice == "4":
-                self.binder_manager.manage()
+                self.binder_game.main_menu()
             elif choice == "5":
                 self.show_scores()
             elif choice == "6":
